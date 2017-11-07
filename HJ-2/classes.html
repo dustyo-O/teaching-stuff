@@ -1,0 +1,48 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        .button {
+            border-radius: 20%;
+        }
+
+        .red {
+            border-color: red;
+        }
+    </style>
+</head>
+<body>
+<button class="button btn-check">1</button>
+<button class="button btn-check">2</button>
+<button class="button btn-check">3</button>
+<button class="button btn-check2">4</button>
+<script>
+    var checkButtons = document.getElementsByClassName('btn-check');
+
+    function toggleCheckClass() {
+        this.className = this.className.split(' ').reduce(function(classList, item){
+            if (item === 'red') {
+                classList.splice(0, 1);
+            } else {
+                classList.push(item);
+            }
+            return classList;
+        }, ['red']).join(' ');
+    }
+
+    for (var checkBtn of checkButtons) {
+        checkBtn.onclick = toggleCheckClass;
+    }
+
+    var check2Buttons = document.getElementsByClassName('btn-check2');
+
+    function toggleCheck2Class() {
+        this.classList.toggle('red');
+    }
+
+    for (var check2Btn of check2Buttons) {
+        check2Btn.onclick = toggleCheck2Class;
+    }
+</script>
+</body>
+</html>

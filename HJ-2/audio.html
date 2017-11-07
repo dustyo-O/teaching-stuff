@@ -1,0 +1,47 @@
+<html>
+<head>
+    <meta charset="utf-8"> 
+    <style>
+        .time-stripe {
+            height: 10px;
+            background: black;
+            width: 0;
+        }
+    </style>   
+</head>
+<body>
+<audio controls src="sample.mp3" class="audio-player">
+    Интернет эксплорер - не лучший браузер
+</audio>
+<input type="checkbox" class="player-hide" checked><br/>
+<button class="button-play">></button>
+<button class="button-pause">||</button>
+<button class="button-stop">#</button>
+<div class="time-stripe"></div>
+<script>
+    var player = document.getElementsByClassName('audio-player')[0];
+
+    document.getElementsByClassName('player-hide')[0].onchange = function() {
+        player.controls = this.checked;
+    }
+
+    document.getElementsByClassName('button-play')[0].onclick = function() {
+        player.play();
+    }
+
+    document.getElementsByClassName('button-pause')[0].onclick = function() {
+        player.pause();
+    }
+
+    document.getElementsByClassName('button-stop')[0].onclick = function() {
+        player.pause();
+        player.currentTime = 0;
+    }
+
+    player.ontimeupdate = function() {
+        document.getElementsByClassName('time-stripe')[0].style.width = 
+            (player.currentTime / player.duration * 100) + '%';
+    }
+</script>
+</body>
+</html>

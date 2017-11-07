@@ -1,0 +1,23 @@
+<html>
+<head>
+    <meta charset="utf-8">    
+</head>
+<body>
+<button>1</button>
+<button>2</button>
+<button>3</button>
+<button>4</button>
+<script>
+    var buttons = document.getElementsByTagName('button');
+
+    function buttonClick() {
+        this.innerText = Number(this.innerText) + 1;
+    }
+
+    for(var i = 0; i < buttons.length; i++) {
+        buttons[i].onclick = buttonClick;
+    }
+</script>
+<p>test</p>
+</body>
+</html>
